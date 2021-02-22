@@ -51,7 +51,6 @@ function App() {
         let newTasks = [newTask, ...task];
         tasksObj[todoListId] = newTasks
         setTasksObj({...tasksObj})
-       // setTasksObj(newTasks);
     }
 
     function changeStatus(taskId: string, isDone: boolean, todoListId: string) {
@@ -72,6 +71,13 @@ function App() {
             setTodoLists([...todoLists])
         }
 
+    }
+
+    function deleteTodoList(todoListId:string) {
+        let filteredTodoLists = todoLists.filter(t => t.id != todoListId);
+        setTodoLists([...filteredTodoLists])
+
+        delete tasksObj[todoListId]
     }
 
 
@@ -100,6 +106,7 @@ function App() {
                         addTask={addTask}
                         changeTaskStatus={changeStatus}
                         filter={tl.filter}
+                        deleteTodoList={deleteTodoList}
                     />
                 )
             })}
