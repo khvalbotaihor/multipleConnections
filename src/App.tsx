@@ -53,6 +53,12 @@ function App() {
     function addTodoList(title: string) {
         let newItem: todoListsType = {id: v1(), title: title, filter: "all"}
         setTodoLists([newItem, ...todoLists])
+
+        setTasksObj({
+            ...tasksObj,
+            [newItem.id] : []
+
+        })
     }
 
     function removeTask(id: string, todoListId: string) {
