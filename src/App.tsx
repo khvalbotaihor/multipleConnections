@@ -50,11 +50,9 @@ function App() {
         setTasksObj({...tasksObj})
     }
 
-    function addItem(title: string) {
+    function addTodoList(title: string) {
         let newItem: todoListsType = {id: v1(), title: title, filter: "all"}
-        let newTodoLists = [newItem, ...todoLists]
-
-        setTodoLists([...newTodoLists])
+        setTodoLists([newItem, ...todoLists])
     }
 
     function removeTask(id: string, todoListId: string) {
@@ -95,7 +93,7 @@ function App() {
 
     return (
         <div className="App">
-            <AddItemForm addItem={()=>{}} id="1"/>
+            <AddItemForm addItem={addTodoList}/>
             {todoLists.map(tl => {
                 let tasksForTodolist = tasksObj[tl.id];
 
