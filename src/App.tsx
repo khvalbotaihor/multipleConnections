@@ -23,8 +23,17 @@ function App() {
         {id: todoListId2, title: "What to buy", filter: "active"},
     ])
 
+    type tasksType = {
+        id:string
+        title:string
+        isDone:boolean
+    }
 
-    let [tasksObj, setTasksObj] = useState({
+    type tasksObjType = {
+        [key:string] : Array<tasksType>
+    }
+
+    let [tasksObj, setTasksObj] = useState<tasksObjType>({
         [todoListId1]: [
             {id: v1(), title: "HTML&CSS", isDone: true},
             {id: v1(), title: "JS", isDone: true},
